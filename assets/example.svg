@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="240" viewBox="0 0 640 240" role="img" aria-label="Minimal markdown image example">
+  <rect width="640" height="240" fill="#f4f6f2"/>
+  <rect x="24" y="24" width="592" height="192" fill="none" stroke="#1f7a4d" stroke-width="2"/>
+  <text x="48" y="118" fill="#151816" font-family="monospace" font-size="24">markdown image example</text>
+  <text x="48" y="154" fill="#707871" font-family="monospace" font-size="16">assets/example.svg</text>
+</svg>

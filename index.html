@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Minimal personal portfolio styled as a small developer filesystem.">
+    <title>dev-path</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="logo" href="#top" data-i18n="logo">~/dev-path</a>
+      <div class="top-actions">
+        <button type="button" class="theme-toggle" data-theme-toggle>theme: light</button>
+        <div class="language-switch" aria-label="Language switcher">
+          <button type="button" class="active" data-lang="en">en</button>
+          <button type="button" data-lang="ru">ru</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top" class="workspace">
+      <section class="sidebar" aria-label="File tree">
+        <div class="sidebar-head">
+          <span data-i18n="explorer">explorer</span>
+          <span data-i18n="rootPath">~/dev-path</span>
+        </div>
+
+        <label class="search">
+          <span>
+            <span data-i18n="searchLabel">search</span>
+            <span class="shortcuts" data-i18n="shortcuts">/ esc ↑↓</span>
+          </span>
+          <input type="search" data-search aria-label="Search site content" placeholder="grep...">
+        </label>
+
+        <div class="tree" role="list" data-tree>
+          <p class="no-results hidden" data-no-results data-i18n="noResults">no matches</p>
+        </div>
+      </section>
+
+      <section class="editor" aria-label="Selected file">
+        <div class="editor-tabs">
+          <span data-current-file>manifest.md</span>
+        </div>
+
+        <article class="document" data-document>
+          <p class="prompt" data-i18n="prompt">$ cat manifest.md</p>
+          <h1>Portfolio manifest</h1>
+          <blockquote>
+            <p>A compact index for the whole site.</p>
+          </blockquote>
+        </article>
+
+        <footer class="statusline">
+          <span data-current-path>~/dev-path/manifest.md</span>
+          <div class="status-actions">
+            <button type="button" data-copy-path data-i18n="copyPath">copy path</button>
+            <span data-i18n="siteUpdated">updated: 2026-06-06</span>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
