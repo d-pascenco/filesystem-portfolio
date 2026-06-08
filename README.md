@@ -2,6 +2,8 @@
 
 A minimal portfolio website styled as a small developer filesystem.
 
+![dev-path preview](assets/preview.gif)
+
 The site reads content from Markdown files, builds a file tree automatically, 
 supports English and Russian content, search, dark mode, collapsible folders, 
 keyboard navigation, and GitHub Pages hosting.
