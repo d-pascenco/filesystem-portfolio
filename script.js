@@ -403,6 +403,14 @@ function moveSelection(direction) {
   selectFile(paths[nextIndex]);
 }
 
+function selectBoundaryFile(position) {
+  const paths = visibleFilePaths();
+  if (!paths.length) {
+    return;
+  }
+  selectFile(position === "first" ? paths[0] : paths[paths.length - 1]);
+}
+
 function copyCurrentPath() {
   const value = currentPath.textContent;
   const done = () => {
@@ -496,6 +504,16 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowUp") {
     event.preventDefault();
     moveSelection(-1);
+  }
+
+  if (event.key === "Home") {
+    event.preventDefault();
+    selectBoundaryFile("first");
+  }
+
+  if (event.key === "End") {
+    event.preventDefault();
+    selectBoundaryFile("last");
   }
 });
 

@@ -19,6 +19,7 @@ keyboard navigation, and GitHub Pages hosting.
 - Folders can be collapsed and expanded.
 - Light and dark themes are supported.
 - Language and theme choices are saved in `localStorage`.
+- `Home` and `End` jump to the first and last visible files.
 - The site is fully static and works on GitHub Pages.
 
 ## Project Structure
