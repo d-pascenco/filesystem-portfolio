@@ -293,6 +293,11 @@ function renderUi() {
     }
   });
   searchInput.placeholder = ui[currentLanguage].searchPlaceholder;
+  languageButtons.forEach((button) => {
+    const isCurrentLanguage = button.dataset.lang === currentLanguage;
+    button.classList.toggle("active", isCurrentLanguage);
+    button.setAttribute("aria-pressed", String(isCurrentLanguage));
+  });
   if (copyPathButton.dataset.copied !== "true") {
     copyPathButton.textContent = ui[currentLanguage].copyPath;
   }
@@ -329,6 +334,7 @@ function renderTree() {
       folderNode.className = `folder${isCollapsed ? " collapsed" : ""}`;
       folderNode.type = "button";
       folderNode.setAttribute("role", "listitem");
+      folderNode.setAttribute("aria-expanded", String(!isCollapsed));
       folderNode.textContent = folder;
       folderNode.addEventListener("click", () => {
         collapsedFolders = collapsedFolders.includes(folder)
@@ -345,6 +351,9 @@ function renderTree() {
       button.className = `file${folder ? " nested" : ""}${file.path === currentPathValue ? " active" : ""}${isCollapsed ? " collapsed" : ""}`;
       button.type = "button";
       button.dataset.path = file.path;
+      if (file.path === currentPathValue) {
+        button.setAttribute("aria-current", "page");
+      }
       button.innerHTML = `<span class="file-indent"></span><span class="file-icon">md</span><span>${escapeHtml(basename(file.path))}</span>`;
       button.addEventListener("click", () => selectFile(file.path));
       tree.append(button);
@@ -370,7 +379,13 @@ function selectFile(path) {
   prompt.textContent = `${ui[currentLanguage].promptPrefix}${file.path}`;
   documentView.innerHTML = file.html;
   tree.querySelectorAll(".file").forEach((button) => {
-    button.classList.toggle("active", button.dataset.path === file.path);
+    const isCurrentFile = button.dataset.path === file.path;
+    button.classList.toggle("active", isCurrentFile);
+    if (isCurrentFile) {
+      button.setAttribute("aria-current", "page");
+    } else {
+      button.removeAttribute("aria-current");
+    }
   });
 }
 
@@ -482,10 +497,6 @@ document.addEventListener("keydown", (event) => {
     event.preventDefault();
     moveSelection(-1);
   }
-});
-
-languageButtons.forEach((button) => {
-  button.classList.toggle("active", button.dataset.lang === currentLanguage);
 });
 
 setTheme(currentTheme);
